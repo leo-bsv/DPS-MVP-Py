@@ -1,0 +1,46 @@
+services:
+  db:
+    image: postgres:18
+    restart: always
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/
+    environment:
+      - POSTGRES_DB=DAAS
+      - POSTGRES_USER=mila
+      - POSTGRES_PASSWORD=mila
+
+  web:
+    build: .
+    command: ["./wait-for-it.sh", "db:5432", "--",
+            "python", "/code/DAAS/manage.py", "runserver", "0.0.0.0:8000"]
+    restart: always
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=DAAS.settings
+      - POSTGRES_DB=DAAS
+      - POSTGRES_USER=mila
+      - POSTGRES_PASSWORD=mila
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./data/static:/var/www/static
+      - ./data/media:/var/www/media
+    depends_on:
+      - web
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
