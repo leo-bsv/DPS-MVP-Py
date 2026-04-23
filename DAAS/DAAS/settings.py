@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1pz+8m3#iv&$ab16xad_j%q(nf#ffv^(dx(4xm_6gfkinvaa0^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'daas_mvp_py']
+ALLOWED_HOSTS = ['127.0.0.1', 'daas_mvp.com', 'kiloks']
 
 
 # Application definition
