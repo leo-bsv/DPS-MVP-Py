@@ -1,0 +1,7 @@
+{%extends 'base.html'%}
+
+{% block content %}
+ <a href="{% url 'account_change_password' %}">Сменить пароль</a>
+ <h1>Это ваш личный кабинет {{ user.username }}</h1>
+ <a href="/">на главную</a>
+{% endblock %}
