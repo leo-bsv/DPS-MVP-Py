@@ -15,6 +15,25 @@ User and resource management for DPS-MVP-Py
 
 ``pip install -r requirements.txt``
 
-### запуск docker оркружения
+### создание docker оркружения
 
-``docker compose up --build``
+``make start``
+
+### для остановки всех контейнеров
+
+``make stop``
+
+### для вывода логов контейнеров использовать
+
+``logs_web, logs_nginx, logs_psql, logs``
+
+### для свое образных миграций
+``make makemigrations/ make migrate ``
+
+### для запуска с логами ли без
+
+``run_logs, run``
+
+### для написания команд в докер к серверу сайта
+
+``make input command=(команда которую надо уже после python manage)``
