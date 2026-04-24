@@ -27,8 +27,10 @@ User and resource management for DPS-MVP-Py
 
 ``logs_web, logs_nginx, logs_psql, logs``
 
-### для миграций
-``make makemigrations | make migrate ``
+### создать миграцию
+``make makemigrations ``
+### выполнить миграции 
+`` make migrate ``
 
 ### для запуска с логами ли без
 
