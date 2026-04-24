@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1pz+8m3#iv&$ab16xad_j%q(nf#ffv^(dx(4xm_6gfkinvaa0^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'daas_mvp.com', 'kiloks']
 
 
 # Application definition
@@ -37,13 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    #apps
-    'main',
-    'users',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'DAAS.urls'
@@ -62,7 +54,7 @@ ROOT_URLCONF = 'DAAS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,9 +119,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-AUTH_EMAIL_VERIFICATION = 'none'
