@@ -29,6 +29,7 @@ User and resource management for DPS-MVP-Py
 
 ### создать миграцию
 ``make makemigrations ``
+
 ### выполнить миграции 
 `` make migrate ``
 
