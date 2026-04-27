@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1pz+8m3#iv&$ab16xad_j%q(nf#ffv^(dx(4xm_6gfkinvaa0^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'kiloks']
+ALLOWED_HOSTS = ['127.0.0.1', 'kiloks', 'daas-mvp.com', 'daas-mvp']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #apps
     'main',
     'users',
+    'tests',
 ]
 
 MIDDLEWARE = [
@@ -128,8 +129,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 AUTH_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'none'

@@ -14,12 +14,11 @@ services:
   web:
     build: .
     command: ["./wait-for-it.sh", "db:5432", "--",
-            "python", "/code/DAAS/manage.py", "runserver", "0.0.0.0:8000"]
+            "uwsgi", "--ini", "/code/config/uwsgi/uwsgi.ini"]
     restart: always
     volumes:
       - .:/code
-    ports:
-      - "8000:8000"
+      - socket_data:/tmp/
     environment:
       - DJANGO_SETTINGS_MODULE=DAAS.settings
       - POSTGRES_DB=DAAS
@@ -38,6 +37,8 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./data/static:/var/www/static
       - ./data/media:/var/www/media
+      - socket_data:/tmp/
+      - socket_data:/tmp/
     depends_on:
       - web
     networks:
@@ -46,3 +47,6 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  socket_data:
