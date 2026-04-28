@@ -1,5 +1,14 @@
 start:
-	docker compose up --build -d && sleep 5 && docker compose logs
+	bash -c ' \
+		python3 -m venv venv; \
+		. venv/bin/activate; \
+		pip install -r requirements.txt; \
+		docker compose up --build -d; \
+		sleep 5; \
+		docker compose logs \'
+
+build_env:
+	docker compose up --build -d
 
 run:
 	docker compose up -d
