@@ -4,5 +4,12 @@
 
 {% block content %}
 <h1 class="title">Главная страница</h1>
-<p>Сайт на стадии разработки</p>
+{% if user.is_authenticated %}
+    <p>Сайт в стадии разработки</p>
+{% else%}
+    <div class="text-center pt-4 border-top">
+        <span class="text-muted small me-3">Войдите в систему пожалуйста</span>
+        <a href="{% url 'account_login' %}" class="btn btn-link p-0 text-decoration-none fw-semibold text-primary">Войти</a>
+    </div>
+{% endif %}
 {% endblock %}

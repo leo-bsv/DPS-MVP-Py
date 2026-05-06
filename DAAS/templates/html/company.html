@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+
+{% block title %}Компания{% endblock %}
+
+{% block content %}
+<h1>Добавление компании</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-link p-0 text-decoration-none fw-semibold text-primary">Сохранить</button>
+</form>
+{% endblock %}

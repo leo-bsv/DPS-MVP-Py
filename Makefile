@@ -5,7 +5,7 @@ start:
 		pip install -r requirements.txt; \
 		docker compose up --build -d; \
 		sleep 5; \
-		docker compose logs \'
+		docker compose logs'
 
 build_env:
 	docker compose up --build -d
@@ -40,3 +40,17 @@ logs:
 input:
 	docker compose exec web python /code/DAAS/manage.py $(command)
 
+rw:
+	docker compose restart web
+
+rd:
+	docker compose restart db
+
+rn:
+	docker compose restart nginx
+
+collect:
+	docker compose exec web python /code/DAAS/manage.py collectstatic
+
+check:
+	docker compose exec web python /code/DAAS/manage.py check

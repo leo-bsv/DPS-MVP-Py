@@ -14,10 +14,21 @@
                         <p class="text-muted mb-1">Имя пользователя:</p>
                         <h4 class="text-dark">{{ user.username }}</h4>
                     </div>
+                    <div class="mb-4">
+                        <p class="text-muted mb-1">Email пользователя:</p>
+                        <h4 class="text-dark">{{ user.email }}</h4>
+                    </div>
+
 
                     <div class="d-grid gap-2">
+                        {% if user.is_staff %}
+                            <a class="btn btn-danger" href="{% url 'admin:index' %}">Войти в админ панель</a>
+                        {% endif %}
                         <a href="{% url 'account_change_password' %}" class="btn btn-outline-primary btn-lg">
                             Сменить пароль
+                        </a>
+                        <a href="{% url 'company' %}" class="btn btn-outline-primary btn-lg">
+                            добавить компанию
                         </a>
                         <a href="/" class="btn btn-secondary btn-lg">
                             На главную

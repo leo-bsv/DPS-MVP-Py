@@ -30,6 +30,9 @@
                                        name="{{ form.username.name }}"
                                        placeholder="Имя пользователя"
                                        required>
+                                {% if form.username.errors %}
+                                    <div class="text-danger">Такое имя занято</div>
+                                {% endif %}
                             </div>
 
                             <div class="input-group input-group-lg mb-4">
@@ -42,6 +45,9 @@
                                        name="{{ form.email.name }}"
                                        placeholder="Email"
                                        required>
+                                {% if form.email.errors %}
+                                    <div class="text-danger"><p>Невозможно зарегестрировать данный email.</p></div>
+                                {% endif %}
                             </div>
 
                             <div class="input-group input-group-lg mb-4">
@@ -54,6 +60,9 @@
                                        name="{{ form.password1.name }}"
                                        placeholder="Пароль"
                                        required>
+                                {% if form.password1.errors %}
+                                    <div class="text-danger">{{ form.password1.errors }}</div>
+                                {% endif %}
                             </div>
 
                             <div class="input-group input-group-lg mb-3">
@@ -65,6 +74,9 @@
                                        id="{{ form.password2.id_for_label }}"
                                        name="{{ form.password2.name }}"
                                        placeholder="Подтвердите пароль">
+                                {% if form.password2.errors %}
+                                    <div class="text-danger">{{ form.password2.errors }}</div>
+                                {% endif %}
                             </div>
 
                             {% if redirect_field_value %}
