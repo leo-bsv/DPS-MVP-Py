@@ -22,7 +22,9 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="{%url 'profile' %}">Профиль</a></li>
-                            <li><a class="dropdown-item" href="#">что-то будет</a></li>
+                            <li><a class="dropdown-item" href="{% url 'company_list' %}">Компания</a></li>
+                            <li><a class="dropdown-item" href="{% url 'models' %}">Модели</a></li>
+                            <li><a class="dropdown-item" href="{% url 'orders' %}" >Заказы</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'account_logout' %}">выход</a></li>
                         </ul>
