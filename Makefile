@@ -1,5 +1,14 @@
 start:
-	docker compose up --build -d && sleep 5 && docker compose logs
+	bash -c ' \
+		python3 -m venv venv; \
+		. venv/bin/activate; \
+		pip install -r requirements.txt; \
+		docker compose up --build -d; \
+		sleep 5; \
+		docker compose logs'
+
+build_env:
+	docker compose up --build -d
 
 run:
 	docker compose up -d
@@ -31,3 +40,17 @@ logs:
 input:
 	docker compose exec web python /code/DAAS/manage.py $(command)
 
+rw:
+	docker compose restart web
+
+rd:
+	docker compose restart db
+
+rn:
+	docker compose restart nginx
+
+collect:
+	docker compose exec web python /code/DAAS/manage.py collectstatic
+
+check:
+	docker compose exec web python /code/DAAS/manage.py check

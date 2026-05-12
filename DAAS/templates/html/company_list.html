@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+
+{% block content %}
+    <h3>Мои проекты:</h3>
+    <ul>
+      {% for company in user.members.all %}
+        <li>{{ company.name }}</li>
+      {% empty %}
+        <li>Вы еще не вступили ни в один проект</li>
+      {% endfor %}
+    </ul>
+{% endblock %}

@@ -5,19 +5,18 @@ User and resource management for DPS-MVP-Py
 
 ### создание окружения
 
-``python3 -m venv venv``
+``make start``
 
-### вход в окружение
+### для прокидывания портов
 
-``source venv/bin/activate``
+``sudo nano /etc/hosts``
+#### и в конец вставте
 
-### скачивание покетов
-
-``pip install -r requirements.txt``
+``127.0.0.1 daas-mvp.com``
 
 ### создание docker оркружения
 
-``make start``
+``make build_env``
 
 ### для остановки всех контейнеров
 
